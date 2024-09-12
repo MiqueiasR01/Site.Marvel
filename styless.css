@@ -1,0 +1,156 @@
+/* Estilos gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1c1c1c, #383838); /* Fundo escuro com tons mais neutros */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Título fixo no topo */
+h1 {
+    /*position: fixed;*/
+    top: 20px; /* Distância do topo da página */
+    text-align: center;
+    color: red;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 3px 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Container de cartões ajustado */
+.cards-container {
+    margin-top: 100px; /* Espaço suficiente para o título fixo não sobrepor os cartões */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 90%;
+    max-width: 1300px;
+    padding: 20px;
+}
+
+/* Cartões ajustados */
+.movie-card {
+    background: #222;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    color: red;
+    position: relative;
+    overflow: hidden;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: scale(1.05) rotateY(5deg) rotateX(5deg); /* Efeito 3D ao hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7); /* Sombra mais intensa no hover */
+    background: linear-gradient(135deg, #ff416c, #ff4b2b); /* Gradiente no fundo ao hover */
+}
+
+/* Efeito de iluminação */
+.movie-card:before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(-45deg);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 0;
+    z-index: -1;
+}
+
+.movie-card:hover:before {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* Brilho dinâmico */
+.movie-card:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    transform: skewX(-30deg);
+    transition: left 0.5s ease;
+}
+
+.movie-card:hover:after {
+    left: 150%;
+}
+
+/* Título do filme */
+.movie-card h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, red, rgb(183, 14, 14), white); /* Gradiente suave no texto */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Sombra sutil no texto */
+}
+
+/* Descrição do filme */
+.movie-card p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0 15px;
+    opacity: 0.9;
+    transition: color 0.4s ease, opacity 0.4s ease;
+}
+
+.movie-card:hover p {
+    color: #fff;
+    opacity: 1;
+    text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Adicionando efeito de profundidade ao texto */
+.movie-card h2, .movie-card p {
+    transform: translateZ(20px); /* O texto "salta" levemente, criando um efeito 3D */
+}
+
+.mais{
+    background-color: red;
+    border: none;
+    color: #000000;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    animation: pulse 4s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.mais:hover {
+    animation: none;
+    background-color: rgb(57, 141, 224);
+}
